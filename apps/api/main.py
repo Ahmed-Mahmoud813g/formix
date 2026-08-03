@@ -10,6 +10,8 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+from routers import auth
+
 # CORS Setup
 app.add_middleware(
     CORSMiddleware,
@@ -18,6 +20,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Routers
+app.include_router(auth.router)
 
 @app.get("/", tags=["Root"])
 async def root():
