@@ -19,7 +19,8 @@ export default function PublicFormPage() {
   const [submitError, setSubmitError] = useState('');
   const [startTime] = useState(Date.now());
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://formix-production.up.railway.app';
+  const rawApiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://formix-production.up.railway.app';
+  const API_URL = rawApiUrl.replace(/\/+$/, '');
 
   useEffect(() => {
     const fetchForm = async () => {

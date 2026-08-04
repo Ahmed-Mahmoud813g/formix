@@ -32,7 +32,7 @@ export function Footer() {
             Pricing
           </Link>
           <a
-            href="http://localhost:8000/docs"
+            href={`${process.env.NEXT_PUBLIC_API_URL || 'https://formix-production.up.railway.app'}/docs`}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
