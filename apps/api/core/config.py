@@ -30,7 +30,12 @@ class Settings(BaseSettings):
     
     @property
     def cors_origins(self) -> List[str]:
-        return [self.FRONTEND_URL, "http://localhost:3000", "http://127.0.0.1:3000"]
+        return [
+            self.FRONTEND_URL,
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "https://formix-gamma.vercel.app",
+        ]
 
     class Config:
         env_file = ".env"
