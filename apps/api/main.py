@@ -30,6 +30,14 @@ app.include_router(responses.router)
 app.include_router(billing.router)
 app.include_router(admin.router)
 
+from core.database import engine, Base
+import models  # noqa: F401
+
+@app.on_event("startup")
+async def startup():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
 @app.get("/", tags=["Root"])
 async def root():
     return {
