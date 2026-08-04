@@ -13,15 +13,9 @@ app = FastAPI(
 from routers import auth, ai, forms, responses, billing, admin
 
 # CORS Setup
-allowed_origins = list(set(settings.cors_origins + [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://formix-gamma.vercel.app",
-]))
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
